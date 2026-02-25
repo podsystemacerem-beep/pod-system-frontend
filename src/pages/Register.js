@@ -88,12 +88,7 @@ const Register = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="role">Role</label>
-            <select name="role" value={formData.role} onChange={handleChange}>
-              <option value="messenger">Messenger</option>
-              <option value="coordinator">Coordinator</option>
-            </select>
-          </div>
+          {/* Role is fixed to 'messenger' for self-registration; admin/coordinator created separately */}
 
           <div className="form-group">
             <label htmlFor="phone">Phone Number</label>
