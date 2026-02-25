@@ -105,10 +105,7 @@ const BillsManagement = () => {
     }
   };
 
-  const handleLocationSelect = ({ lat, lng }) => {
-    setFormData(prev => ({ ...prev, latitude: lat.toFixed(6), longitude: lng.toFixed(6), address: `${lat.toFixed(6)}, ${lng.toFixed(6)}` }));
-    setShowGooglePicker(false);
-  };
+  
 
   const filteredBills = filter === 'all' ? bills : bills.filter(b => b.status === filter);
 

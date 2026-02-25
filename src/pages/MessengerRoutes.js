@@ -17,12 +17,13 @@ const MessengerRoutes = () => {
   const [uploadedProof, setUploadedProof] = useState(null);
   const [proofModal, setProofModal] = useState({ visible: false, deliveryId: null });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchRoutes();
     // Auto-refresh every 30 seconds (FR-M12: route update notifications)
     const interval = setInterval(fetchRoutes, 30000);
     return () => clearInterval(interval);
-  }, []);  // fetchRoutes is defined below, marked as safe
+  }, []);
 
   const fetchRoutes = async () => {
     try {

@@ -7,6 +7,7 @@ const MessengerDeliveries = () => {
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchDeliveries();
   }, [filter]);
