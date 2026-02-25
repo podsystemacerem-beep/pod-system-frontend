@@ -30,10 +30,6 @@ const MessengerRoutes = () => {
       const response = await api.get('/messenger/routes');
       const rawDeliveries = response.data.deliveries;
       
-      // Extract route info (FR-M03: assigned route for the day)
-      const routes = [...new Set(rawDeliveries.map(d => d.billId?.route).filter(Boolean))];
-      setAssignedRoute(routes.length === 1 ? routes[0] : `Multiple Routes (${routes.length})`);
-      
       // Sort by sequence/address for optimization (FR-M04: optimized delivery sequence)
       const optimizedDeliveries = sortDeliveries(rawDeliveries);
       setDeliveries(optimizedDeliveries);
