@@ -87,7 +87,6 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-group">
           {/* Role is fixed to 'messenger' for self-registration; admin/coordinator created separately */}
 
           <div className="form-group">
