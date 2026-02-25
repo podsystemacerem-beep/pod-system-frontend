@@ -44,7 +44,7 @@ const Register = () => {
       <div className="auth-box">
         <div className="auth-header">
           <h1>POD System</h1>
-          <p>Create Account</p>
+          <p>Messenger Registration</p>
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
