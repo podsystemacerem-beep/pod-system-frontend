@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import api from '../utils/api';
 import './Messenger.css';
 
@@ -7,12 +7,7 @@ const MessengerDeliveries = () => {
   const [filter, setFilter] = useState('all');
   const [loading, setLoading] = useState(true);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    fetchDeliveries();
-  }, [filter]);
-
-  const fetchDeliveries = async () => {
+  const fetchDeliveries = useCallback(async () => {
     try {
       setLoading(true);
       let url = '/messenger/deliveries';
@@ -26,7 +21,11 @@ const MessengerDeliveries = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
+
+  useEffect(() => {
+    fetchDeliveries();
+  }, [fetchDeliveries]);
 
   const getStats = () => {
     const stats = {

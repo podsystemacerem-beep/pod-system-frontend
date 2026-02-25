@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import api from '../utils/api';
 import './Messenger.css';
 
@@ -17,15 +17,8 @@ const MessengerRoutes = () => {
   const [uploadedProof, setUploadedProof] = useState(null);
   const [proofModal, setProofModal] = useState({ visible: false, deliveryId: null });
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    fetchRoutes();
-    // Auto-refresh every 30 seconds (FR-M12: route update notifications)
-    const interval = setInterval(fetchRoutes, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const fetchRoutes = async () => {
+  
+  const fetchRoutes = useCallback(async () => {
     try {
       setLoading(true);
       const response = await api.get('/messenger/routes');
@@ -40,7 +33,14 @@ const MessengerRoutes = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchRoutes();
+    // Auto-refresh every 30 seconds (FR-M12: route update notifications)
+    const interval = setInterval(fetchRoutes, 30000);
+    return () => clearInterval(interval);
+  }, [fetchRoutes]);
 
   // Simple optimization: group by route, then sort by pending status first, then address
   const sortDeliveries = (items) => {
