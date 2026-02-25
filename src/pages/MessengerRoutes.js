@@ -9,7 +9,6 @@ const MessengerRoutes = () => {
   const [filter, setFilter] = useState('all');
   const [failureModal, setFailureModal] = useState({ visible: false, deliveryId: null });
   const [failureReason, setFailureReason] = useState('');
-  const [assignedRoute, setAssignedRoute] = useState(null);
   // Proof capture refs/state
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -23,7 +22,7 @@ const MessengerRoutes = () => {
     // Auto-refresh every 30 seconds (FR-M12: route update notifications)
     const interval = setInterval(fetchRoutes, 30000);
     return () => clearInterval(interval);
-  }, []);
+  }, []);  // fetchRoutes is defined below, marked as safe
 
   const fetchRoutes = async () => {
     try {

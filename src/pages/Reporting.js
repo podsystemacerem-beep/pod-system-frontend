@@ -3,7 +3,6 @@ import api from '../utils/api';
 import './Coordinator.css';
 
 const Reporting = () => {
-  const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [currentReport, setCurrentReport] = useState(null);

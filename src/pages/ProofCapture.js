@@ -4,7 +4,6 @@ import './Messenger.css';
 
 const ProofCapture = () => {
   const [selectedDeliveryId, setSelectedDeliveryId] = useState('');
-  const [deliveries, setDeliveries] = useState([]);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const videoRef = useRef(null);

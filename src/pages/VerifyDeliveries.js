@@ -6,7 +6,6 @@ const VerifyDeliveries = () => {
   const [deliveries, setDeliveries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('pending');
-  const [expandedId, setExpandedId] = useState(null);
   const [verificationNotes, setVerificationNotes] = useState({});
 
   useEffect(() => {
